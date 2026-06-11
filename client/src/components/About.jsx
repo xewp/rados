@@ -139,8 +139,8 @@ export default function About() {
                 {/* Main image */}
                 <div className="rounded-3xl overflow-hidden shadow-warm-xl aspect-food relative">
                   <img
-                    src={MENU_ITEMS[0].image}
-                    alt="Crispy Lechon Kawali - Rado's signature dish"
+                    src={SITE_INFO.aboutImg}
+                    alt="Rado's Lechon traditional food"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />

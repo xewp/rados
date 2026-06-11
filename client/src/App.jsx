@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Memorial from './components/Memorial';
 import SignatureDishes from './components/SignatureDishes';
 import Menu from './components/Menu';
 import Gallery from './components/Gallery';
@@ -16,6 +17,7 @@ export default function App() {
       <main id="main-content" role="main">
         <Hero />
         <About />
+        <Memorial />
         <SignatureDishes />
         <Menu />
         <Gallery />

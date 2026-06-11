@@ -8,15 +8,15 @@ const INFO_CARDS = [
     icon: <Clock size={22} className="text-gold" />,
     title: "Operating Hours",
     lines: [
-      { label: "Monday – Sunday", value: SITE_INFO.hours },
-      { label: "Open Daily", value: SITE_INFO.hoursNote },
+      { label: "Schedule", value: "Open Daily" },
+      { label: "Time", value: SITE_INFO.hours },
     ],
   },
   {
     icon: <MapPin size={22} className="text-gold" />,
     title: "Our Location",
     lines: [
-      { label: "Address", value: SITE_INFO.address },
+      { label: "Address", value: "2139 Simon St cor F Varona" },
       { label: "City", value: "Tondo, Manila" },
     ],
   },
@@ -24,10 +24,9 @@ const INFO_CARDS = [
     icon: <Phone size={22} className="text-gold" />,
     title: "Get in Touch",
     lines: [
-      { label: "Phone", value: SITE_INFO.phoneDisplay },
-      { label: "Hours", value: `${SITE_INFO.hours} daily` },
+      { label: "Phone Number", value: SITE_INFO.phoneDisplay, href: SITE_INFO.phoneHref },
+      { label: "Facebook Page", value: "Rado's Lechon since 1994", href: SITE_INFO.facebook, isExternal: true },
     ],
-    isPhone: true,
   },
 ];
 
@@ -94,11 +93,12 @@ export default function Location() {
                 {card.lines.map((line) => (
                   <div key={line.label}>
                     <p className="font-poppins text-charcoal/50 text-xs">{line.label}</p>
-                    {card.isPhone ? (
+                    {line.href ? (
                       <a
-                        href={SITE_INFO.phoneHref}
-                        className="font-oswald font-semibold text-gold text-lg hover:text-gold-amber transition-colors"
-                        aria-label={`Call ${SITE_INFO.phoneDisplay}`}
+                        href={line.href}
+                        target={line.isExternal ? "_blank" : undefined}
+                        rel={line.isExternal ? "noopener noreferrer" : undefined}
+                        className="font-poppins font-medium text-gold hover:text-gold-amber transition-colors text-sm break-all block"
                       >
                         {line.value}
                       </a>

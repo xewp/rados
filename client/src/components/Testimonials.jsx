@@ -4,10 +4,26 @@ import { Quote, Flame } from 'lucide-react';
 import { TESTIMONIALS } from '../data/siteData';
 
 function StarRow({ count = 5 }) {
+  const fullStars = Math.floor(count);
+  const hasHalf = count % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
+
   return (
     <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
-      {Array.from({ length: count }).map((_, i) => (
-        <span key={i} style={{ color: '#D4A017', fontSize: '14px' }}>★</span>
+      {Array.from({ length: fullStars }).map((_, i) => (
+        <span key={`f-${i}`} style={{ color: '#D4A017', fontSize: '14px' }}>★</span>
+      ))}
+      {hasHalf && (
+        <span style={{
+          background: 'linear-gradient(90deg, #D4A017 50%, rgba(212, 160, 23, 0.2) 50%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          fontSize: '14px',
+          display: 'inline-block'
+        }}>★</span>
+      )}
+      {Array.from({ length: emptyStars }).map((_, i) => (
+        <span key={`e-${i}`} style={{ color: 'rgba(212, 160, 23, 0.2)', fontSize: '14px' }}>★</span>
       ))}
     </div>
   );
@@ -135,9 +151,16 @@ export default function Testimonials() {
           className="flex items-center justify-center gap-3 mb-10"
         >
           <div className="flex gap-0.5">
-            {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#D4A017', fontSize: '20px' }}>★</span>)}
+            {[1,2,3,4].map(i => <span key={i} style={{ color: '#D4A017', fontSize: '20px' }}>★</span>)}
+            <span style={{
+              background: 'linear-gradient(90deg, #D4A017 50%, rgba(212, 160, 23, 0.2) 50%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: '20px',
+              display: 'inline-block'
+            }}>★</span>
           </div>
-          <span className="font-oswald font-bold text-3xl text-charcoal">5.0</span>
+          <span className="font-oswald font-bold text-3xl text-charcoal">4.5</span>
           <span className="font-poppins text-charcoal/60 text-sm">on Google Maps</span>
         </motion.div>
       </div>
